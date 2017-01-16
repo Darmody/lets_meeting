@@ -1,0 +1,42 @@
+<!--index.wxml-->
+<view>
+  <view>
+    <view>
+      <button class="btn" type="primary" bindtap="addMeetingTime">添加时间</button>
+      <view
+        wx:for="{{meetingTimes}}"
+        wx:for-index="key"
+        wx:key="item"
+        class="meeting-time-item"
+      >
+        <picker
+          class="picker timezone-picker"
+          bindchange="handleTimezonePick"
+          data-timeid="{{key}}"
+          value="{{index}}"
+          range="{{timezones}}"
+        >
+          <span class="picker-label">{{item.timezone}}</span>
+        </picker>
+        <picker
+          class="picker"
+          bindchange="handleDatePick"
+          data-timeid="{{key}}"
+          value="{{item.date}}"
+          mode="date"
+        >
+          <span class="picker-label">{{item.date}}</span>
+        </picker>
+        <picker
+          class="picker"
+          bindchange="handleTimePick"
+          data-timeid="{{key}}"
+          value="{{item.time}}"
+          mode="time"
+        >
+          <span class="picker-label">{{item.time}}</span>
+        </picker>
+      </view>
+    </view>
+  </view>
+</view>
